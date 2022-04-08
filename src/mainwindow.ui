@@ -485,7 +485,14 @@
         <widget class="QComboBox" name="comboBox_table_filter"/>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit"/>
+        <widget class="QLineEdit" name="lineEdit_filter"/>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBox_filter">
+         <property name="text">
+          <string>Use filter</string>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer name="verticalSpacer_2">

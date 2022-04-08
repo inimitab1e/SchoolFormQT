@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget* parent, DbController* dbc, QThread* dbt) :
     connect(this, SIGNAL(connectToServer(QString,QString,QString,int,QString,QString,QString,bool)),
             db_controller, SLOT(connectToServerRequested(QString,QString,QString,int,QString,QString,QString,bool)));
     connect(this, SIGNAL(disconnectFromServer()), db_controller, SLOT(disconnectFromServerRequested()));
-    connect(this, SIGNAL(selectTable(QString,QString,QString)), db_controller, SLOT(selectTableRequested(QString)));
+    connect(this, SIGNAL(selectTable(QString,QString,QString)), db_controller, SLOT(selectTableRequested(QString, QString, QString)));
     connect(this, SIGNAL(getTablesNames()), db_controller, SLOT(getTablesNamesRequested()));
 
      // db_controller => ui
@@ -152,7 +152,18 @@ void MainWindow::showTableRequested()
 
     QString table_name = ui->comboBox_table_name->currentText();
 
-    emit selectTable(table_name, "", "");
+    if (ui->checkBox_filter->checkState() == 0)
+    {
+        emit selectTable(table_name, "", "");
+    }
+    else
+    {
+        QString Field = ui->comboBox_table_filter->currentText();
+        QString Value = ui->lineEdit_filter->text();
+        emit selectTable(table_name, Field, Value);
+    }
+
+
 }
 
 void MainWindow::serverConnected()
@@ -252,5 +263,5 @@ void MainWindow::keyPressEvent(QKeyEvent* pe)
 
 void MainWindow::on_button_filterhelp_clicked()
 {
-    QMessageBox::information(this,"Help", "1. Choose a field you need\n2. Write the required value of the selected field\n3. Click on the button below the input field");
+    QMessageBox::information(this,"Help", "1. Choose a field you need\n2. Write the required value of the selected field\n3. Click on the show button");
 }

@@ -73,9 +73,9 @@ bool DbController::checkIfConnected()
     return db.isOpen();
 }
 
-void DbController::selectTableRequested(QString table)
+void DbController::selectTableRequested(QString table, QString field, QString value)
 {
-    QSqlQueryModel* model = selectTable(table, "", "");
+    QSqlQueryModel* model = selectTable(table, field, value);
 
     emit tableSelected(model);
 }

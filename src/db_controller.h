@@ -17,7 +17,7 @@ public:
 public slots:
     void connectToServerRequested(QString, QString, QString, int, QString, QString, QString, bool);
     void disconnectFromServerRequested();
-    void selectTableRequested(QString);
+    void selectTableRequested(QString, QString, QString);
     void getTablesNamesRequested();
 
 signals:
