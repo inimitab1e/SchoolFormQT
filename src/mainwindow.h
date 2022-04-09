@@ -24,6 +24,7 @@ public slots:
     void engineChanged();
     void authenticationMethodChanged();
     void showTableRequested();
+    void deleteRowRequested();
     void serverConnected();
     void serverErrorWithConnection(QString);
     void serverDisconnected();
@@ -34,6 +35,7 @@ signals:
     void connectToServer(QString, QString, QString, int, QString, QString, QString, bool);
     void disconnectFromServer();
     void selectTable(QString, QString, QString);
+    void selectTableDeleteRow(QString, int);
     void getTablesNames();
     
 private:

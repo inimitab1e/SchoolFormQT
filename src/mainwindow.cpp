@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget* parent, DbController* dbc, QThread* dbt) :
     connect(ui->radio_sql_authentication, SIGNAL(clicked()), this, SLOT(authenticationMethodChanged()));
     connect(ui->radio_windows_authentication, SIGNAL(clicked()), this, SLOT(authenticationMethodChanged()));
     connect(ui->button_show_table, SIGNAL(clicked()), this, SLOT(showTableRequested()));
+    connect(ui->button_deleteRow, SIGNAL(clicked()), this, SLOT(deleteRowRequested()));
 
     // ui => db_controller
 
@@ -33,6 +34,7 @@ MainWindow::MainWindow(QWidget* parent, DbController* dbc, QThread* dbt) :
             db_controller, SLOT(connectToServerRequested(QString,QString,QString,int,QString,QString,QString,bool)));
     connect(this, SIGNAL(disconnectFromServer()), db_controller, SLOT(disconnectFromServerRequested()));
     connect(this, SIGNAL(selectTable(QString,QString,QString)), db_controller, SLOT(selectTableRequested(QString, QString, QString)));
+    connect(this, SIGNAL(selectTableDeleteRow(QString,int)), db_controller, SLOT(selectTableDeleteRowRequested(QString, int)));
     connect(this, SIGNAL(getTablesNames()), db_controller, SLOT(getTablesNamesRequested()));
 
      // db_controller => ui
@@ -42,6 +44,7 @@ MainWindow::MainWindow(QWidget* parent, DbController* dbc, QThread* dbt) :
             this, SLOT(serverErrorWithConnection(QString)));
     connect(db_controller, SIGNAL(serverDisconnected()), this, SLOT(serverDisconnected()));
     connect(db_controller, SIGNAL(tableSelected(QSqlQueryModel*)), this, SLOT(displayTable(QSqlQueryModel*)));
+    connect(db_controller, SIGNAL(tableDeleteRowSelected(QSqlQueryModel*)), this, SLOT(displayTable(QSqlQueryModel*)));
     connect(db_controller, SIGNAL(gotTablesNames(QStringList)), this, SLOT(fillTablesNames(QStringList)));
 
 }
@@ -166,6 +169,22 @@ void MainWindow::showTableRequested()
 
 }
 
+void MainWindow::deleteRowRequested()
+{
+    int ID = -1;
+    QString Table = ui->comboBox_table_name->currentText();
+    ID = ui->spinBox_deleteRow->value();
+    if(ID == -1)
+    {
+        QMessageBox::information(this,
+                                 "Value of ID is empty",
+                                 "Choose the value of ID",
+                                 QMessageBox::Ok);
+        return;
+    }
+    emit selectTableDeleteRow(Table, ID);
+}
+
 void MainWindow::serverConnected()
 {
     ui->button_connect->setEnabled(true);
@@ -175,7 +194,7 @@ void MainWindow::serverConnected()
 
     ui->button_connect->setText("Disconnect");
     ui->groupBox_database_browser->setEnabled(true);
-    ui->groupBox_table_filter->setEnabled(true);
+    ui->groupBox_table_tools->setEnabled(true);
 
     ui->statusBar->showMessage("Connected", 3000);
     emit getTablesNames();
@@ -241,7 +260,7 @@ void MainWindow::displayTable(QSqlQueryModel* model)
 
     ui->comboBox_table_filter->clear();
 
-    int column = 0;
+    int column = 1;
     while(model->record(0).fieldName(column) != "")
     {
         QString columnName = model->record(0).fieldName(column);

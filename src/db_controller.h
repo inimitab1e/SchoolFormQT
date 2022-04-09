@@ -18,6 +18,7 @@ public slots:
     void connectToServerRequested(QString, QString, QString, int, QString, QString, QString, bool);
     void disconnectFromServerRequested();
     void selectTableRequested(QString, QString, QString);
+    void selectTableDeleteRowRequested(QString, int);
     void getTablesNamesRequested();
 
 signals:
@@ -25,6 +26,7 @@ signals:
     void serverErrorWithConnection(QString);
     void serverDisconnected();
     void tableSelected(QSqlQueryModel*);
+    void tableDeleteRowSelected(QSqlQueryModel*);
     void gotTablesNames(QStringList);
 
 private:
@@ -33,6 +35,7 @@ private:
     bool connectToServerMySQL(QString, int, QString, QString, QString);
     void disconnectFromServer();
     QSqlQueryModel* selectTable(QString, QString, QString);
+    QSqlQueryModel* selectDeleteRowTable(QString, int);
     QSqlError       getLastError();
 
     QSqlDatabase db;

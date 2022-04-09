@@ -106,7 +106,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>&amp;SQL Server authentication</string>
+           <string>SQL Server &amp;authentication</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -473,39 +473,54 @@
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="groupBox_table_filter">
+     <widget class="QGroupBox" name="groupBox_table_tools">
       <property name="enabled">
        <bool>false</bool>
       </property>
       <property name="title">
-       <string>Filter</string>
+       <string>Tools</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QComboBox" name="comboBox_table_filter"/>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_filter"/>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="checkBox_filter">
-         <property name="text">
-          <string>Use filter</string>
+        <widget class="QGroupBox" name="groupBox_table_filter">
+         <property name="title">
+          <string>Filter</string>
          </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QComboBox" name="comboBox_table_filter"/>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_filter"/>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_filter">
+            <property name="text">
+             <string>Use filter</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Delete row</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QSpinBox" name="spinBox_deleteRow"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="button_deleteRow">
+            <property name="text">
+             <string>Delete</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="button_filterhelp">

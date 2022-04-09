@@ -80,6 +80,13 @@ void DbController::selectTableRequested(QString table, QString field, QString va
     emit tableSelected(model);
 }
 
+void DbController::selectTableDeleteRowRequested(QString table, int ID)
+{
+    QSqlQueryModel* model = selectDeleteRowTable(table, ID);
+
+    emit tableDeleteRowSelected(model);
+}
+
 void DbController::getTablesNamesRequested()
 {
     emit gotTablesNames(db.tables());
@@ -125,6 +132,19 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
     QString query = (Field.isEmpty() || Value.isEmpty()) ? "" : " WHERE " + Field + " = " + Value;
 
     model->setQuery("SELECT * FROM " + name + query, db);
+
+    return model;
+}
+
+QSqlQueryModel* DbController::selectDeleteRowTable(QString table, int ID)
+{
+    QSqlQueryModel* model = new QSqlQueryModel;
+
+    QString id = QString::number(ID);
+
+    QString query = "Delete from " + table + " where ID = " + id;
+
+    model->setQuery(query, db);
 
     return model;
 }
