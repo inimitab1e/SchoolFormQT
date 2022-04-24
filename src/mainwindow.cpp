@@ -165,8 +165,6 @@ void MainWindow::showTableRequested()
         QString Value = ui->lineEdit_filter->text();
         emit selectTable(table_name, Field, Value);
     }
-
-
 }
 
 void MainWindow::deleteRowRequested()
@@ -260,7 +258,7 @@ void MainWindow::displayTable(QSqlQueryModel* model)
 
     ui->comboBox_table_filter->clear();
 
-    int column = 1;
+    int column = 0;
     while(model->record(0).fieldName(column) != "")
     {
         QString columnName = model->record(0).fieldName(column);
@@ -278,9 +276,4 @@ void MainWindow::keyPressEvent(QKeyEvent* pe)
         else if (ui->comboBox_table_name->isEnabled() && ui->comboBox_table_name->hasFocus())
             emit showTableRequested();
     }
-}
-
-void MainWindow::on_button_filterhelp_clicked()
-{
-    QMessageBox::information(this,"Help", "1. Choose a field you need\n2. Write the required value of the selected field\n3. Click on the show button");
 }

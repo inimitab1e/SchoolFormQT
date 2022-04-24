@@ -42,12 +42,11 @@ private:
     Ui::MainWindow* ui;
     DbController*   db_controller;
     QThread*        db_thread;
-    QStringList Title;
 
 protected:
     virtual void keyPressEvent(QKeyEvent*);
 private slots:
-    void on_button_filterhelp_clicked();
+    void on_buttonAddinfo_clicked();
 };
 
 #endif // MAINWINDOW_H

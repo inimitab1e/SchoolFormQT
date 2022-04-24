@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>834</width>
-    <height>483</height>
+    <width>1228</width>
+    <height>504</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -54,7 +54,7 @@
          </font>
         </property>
         <property name="title">
-         <string>Connect to server</string>
+         <string>Подключение к серверу</string>
         </property>
         <property name="flat">
          <bool>false</bool>
@@ -72,7 +72,7 @@
           </rect>
          </property>
          <property name="title">
-          <string>Authentication</string>
+          <string>Авторизация</string>
          </property>
          <widget class="QLineEdit" name="lineEdit_login">
           <property name="enabled">
@@ -163,7 +163,7 @@
            </rect>
           </property>
           <property name="text">
-           <string>login:</string>
+           <string>Логин:</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_2">
@@ -176,21 +176,21 @@
            </rect>
           </property>
           <property name="text">
-           <string>password:</string>
+           <string>Пароль:</string>
           </property>
          </widget>
         </widget>
         <widget class="QPushButton" name="button_connect">
          <property name="geometry">
           <rect>
-           <x>88</x>
-           <y>356</y>
-           <width>75</width>
+           <x>70</x>
+           <y>360</y>
+           <width>111</width>
            <height>23</height>
           </rect>
          </property>
          <property name="text">
-          <string>Connect</string>
+          <string>Подключиться</string>
          </property>
          <property name="autoDefault">
           <bool>true</bool>
@@ -206,7 +206,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>server:</string>
+          <string>Сервер:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="lineEdit_server_address">
@@ -245,7 +245,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>database:</string>
+          <string>Имя БД:</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_6">
@@ -258,7 +258,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>port:</string>
+          <string>Порт:</string>
          </property>
         </widget>
         <widget class="QSpinBox" name="spinBox_server_port">
@@ -290,7 +290,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>driver:</string>
+          <string>Драйвер:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="lineEdit_driver">
@@ -313,13 +313,13 @@
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>20</y>
+           <y>30</y>
            <width>231</width>
-           <height>51</height>
+           <height>41</height>
           </rect>
          </property>
          <property name="title">
-          <string>Engine</string>
+          <string>Способ подключения</string>
          </property>
          <widget class="QRadioButton" name="radio_mssql">
           <property name="geometry">
@@ -383,13 +383,13 @@
        </size>
       </property>
       <property name="title">
-       <string>Database browser</string>
+       <string>Обозреватель таблиц</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="3">
         <widget class="QPushButton" name="button_show_table">
          <property name="text">
-          <string>Show</string>
+          <string>Показать</string>
          </property>
          <property name="autoDefault">
           <bool>true</bool>
@@ -452,7 +452,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>table:</string>
+          <string>Имя</string>
          </property>
         </widget>
        </item>
@@ -478,55 +478,382 @@
        <bool>false</bool>
       </property>
       <property name="title">
-       <string>Tools</string>
+       <string>Инструменты</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QGroupBox" name="groupBox_table_filter">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QGroupBox" name="groupBox_table_filter">
+           <property name="title">
+            <string>Фильтр</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QComboBox" name="comboBox_table_filter"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_filter"/>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_filter">
+              <property name="text">
+               <string>Использовать фильтр</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="title">
+            <string>Удаление по ID</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QSpinBox" name="spinBox_deleteRow"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="button_deleteRow">
+              <property name="text">
+               <string>Удалить</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_addinfo">
          <property name="title">
-          <string>Filter</string>
+          <string>Добавление данных</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QComboBox" name="comboBox_table_filter"/>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_filter"/>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBox_filter">
-            <property name="text">
-             <string>Use filter</string>
+           <widget class="QTabWidget" name="tabWidget_addinfo">
+            <property name="currentIndex">
+             <number>5</number>
             </property>
+            <widget class="QWidget" name="tp_school">
+             <attribute name="title">
+              <string>Школы</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Название</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" colspan="2">
+               <widget class="QLineEdit" name="lineEdit"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Адрес</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="2">
+               <widget class="QLineEdit" name="lineEdit_2"/>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="lineEdit_3"/>
+              </item>
+              <item row="3" column="2">
+               <widget class="QPushButton" name="pushButton">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <widget class="QLabel" name="label_10">
+                <property name="text">
+                 <string>Дата основания(ГГГГ-ММ-ДД)</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tp_student">
+             <attribute name="title">
+              <string>Ученики</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>ФИО</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_4"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>Пол</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="lineEdit_5"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_13">
+                <property name="text">
+                 <string>Дата рождения (ГГГГ-ММ-ДД)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="lineEdit_6"/>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>Школа</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="lineEdit_7"/>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Класс</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLineEdit" name="lineEdit_8"/>
+              </item>
+              <item row="5" column="1">
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tp_teacher">
+             <attribute name="title">
+              <string>Учителя</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_16">
+                <property name="text">
+                 <string>ФИО</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" colspan="2">
+               <widget class="QLineEdit" name="lineEdit_9"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_17">
+                <property name="text">
+                 <string>Пол</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="2">
+               <widget class="QLineEdit" name="lineEdit_10"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>Дата рождения (ГГГГ-ММ-ДД)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" colspan="2">
+               <widget class="QLineEdit" name="lineEdit_11"/>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_19">
+                <property name="text">
+                 <string>Школа</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLineEdit" name="lineEdit_12"/>
+              </item>
+              <item row="4" column="0" colspan="2">
+               <widget class="QLabel" name="label_20">
+                <property name="text">
+                 <string>Образование</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QLineEdit" name="lineEdit_13"/>
+              </item>
+              <item row="5" column="0" colspan="2">
+               <widget class="QLabel" name="label_21">
+                <property name="text">
+                 <string>Квалификация</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLineEdit" name="lineEdit_14"/>
+              </item>
+              <item row="6" column="2">
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tp_timetable">
+             <attribute name="title">
+              <string>Расписание</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_5">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>Школа</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_15"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_23">
+                <property name="text">
+                 <string>День недели</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="lineEdit_16"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_24">
+                <property name="text">
+                 <string>Класс</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="lineEdit_17"/>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_25">
+                <property name="text">
+                 <string>Предмет</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="lineEdit_18"/>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_26">
+                <property name="text">
+                 <string>Учитель</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLineEdit" name="lineEdit_19"/>
+              </item>
+              <item row="5" column="1">
+               <widget class="QPushButton" name="pushButton_4">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tp_teacherandschool">
+             <attribute name="title">
+              <string>Учитель и школа</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_6">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_27">
+                <property name="text">
+                 <string>ФИО</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_20"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_28">
+                <property name="text">
+                 <string>Название школы</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="lineEdit_21"/>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <widget class="QPushButton" name="pushButton_5">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tp_teacherandsubject">
+             <attribute name="title">
+              <string>Учитель и предмет</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_7">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_29">
+                <property name="text">
+                 <string>ФИО</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_22"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_30">
+                <property name="text">
+                 <string>Название предмета</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="lineEdit_23"/>
+              </item>
+              <item row="2" column="1">
+               <widget class="QPushButton" name="pushButton_6">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="title">
-          <string>Delete row</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QSpinBox" name="spinBox_deleteRow"/>
-          </item>
-          <item>
-           <widget class="QPushButton" name="button_deleteRow">
-            <property name="text">
-             <string>Delete</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="button_filterhelp">
-         <property name="text">
-          <string>Help</string>
-         </property>
         </widget>
        </item>
       </layout>
