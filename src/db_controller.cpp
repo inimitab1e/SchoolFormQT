@@ -1,4 +1,5 @@
 #include "db_controller.h"
+#include "dbtables.h"
 
 DbController::DbController(QObject* parent) :
     QObject(parent)
@@ -128,11 +129,75 @@ void DbController::disconnectFromServer()
 QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString Value)
 {
     QSqlQueryModel* model = new QSqlQueryModel;
+    DbTable dbtable;
+    QString query = "";
 
-    QString query = (Field.isEmpty() || Value.isEmpty()) ? "" : " WHERE " + Field + " = " + Value;
+    if (name == "School")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
 
-    model->setQuery("SELECT * FROM " + name + query, db);
+            if (Field == "Название")
+            {
+                Field = "SchoolName";
+            }
+            else if (Field == "Адрес")
+            {
+                Field = "Adress";
+            }
+            else
+            {
+                Field = "FoundingDate";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
 
+        model->setQuery("Select " + dbtable.School + ".SchoolName as 'Название', adress as 'Адрес', "
+                        + "FoundingDate as 'Дата основания', " + dbtable.School + ".ID from " + name + query, db);
+
+    }
+    else if (name == "Student")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Имя ученика")
+            {
+                Field = "StudentName";
+            }
+            else if (Field == "Пол")
+            {
+                Field = "Gender";
+            }
+            else if (Field == "Дата рождения")
+            {
+                Field = "Birthday";
+            }
+            else if (Field == "Номер телефона")
+            {
+                Field = "PhoneNumber";
+            }
+            else if (Field == "Средний балл")
+            {
+                Field = "AverageScore";
+            }
+            else if (Field == "Школа")
+            {
+                Field = "SchoolName";
+            }
+            else
+            {
+                Field = "ClassNameNumber";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select " + dbtable.Student + ".StudentName as 'Имя ученика', " + dbtable.Student + ".Gender as 'Пол', "
+                       + dbtable.Student + ".Birthday as 'Дата рождения', " + dbtable.Student + ".PhoneNumber as 'Номер телефона', "
+                       + dbtable.Student + ".AverageScore as 'Средний балл', " + dbtable.School + ".SchoolName as 'Школа', "
+                       + dbtable.ClassNames + ".ClassNameNumber as 'Класс', " + dbtable.Student + ".SchoolID, " + dbtable.Student + ".ClassNameID "
+                       + "from " + name + " left join " + dbtable.School + " on " + dbtable.Student + ".SchoolID = " + dbtable.School + ".ID "
+                       + " left join " + dbtable.ClassNames + " on " + dbtable.Student + ".ClassNameID = " + dbtable.ClassNames + ".ClassNameID " + query, db);
+    }
     return model;
 }
 

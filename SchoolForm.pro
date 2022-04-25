@@ -13,7 +13,8 @@ SOURCES += src/main.cpp\
            src/db_controller.cpp
 
 HEADERS += src/mainwindow.h \
-           src/db_controller.h
+           src/db_controller.h \
+    src/dbtables.h
 
 FORMS   += src/mainwindow.ui
 
