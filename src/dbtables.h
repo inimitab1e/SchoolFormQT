@@ -3,7 +3,7 @@
 class DbTable
 {
 private:
-    QString DbName = "schoolBD.";
+    QString DbName = "SchoolDB.";
 public:
     DbTable() {}
     QString School = DbName + "School";
@@ -13,7 +13,7 @@ public:
     QString Subjects = DbName + "Subjects";
     QString QualificationCategories = DbName + "QualificationCategories";
     QString ClassNames = DbName + "ClassNames";
-    QString Classes = DbName + "Classes";
+    QString ClassRooms = DbName + "ClassRooms";
     QString TeacherAndSchool = DbName + "TeacherAndSchool";
     QString TeacherAndSubjects = DbName + "TeacherAndSubjects";
 };

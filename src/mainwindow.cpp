@@ -66,8 +66,8 @@ void MainWindow::connectToServerRequested()
     else
     {
         QMessageBox::information(this,
-                                 "Invalid Engine",
-                                 "Choose database engine",
+                                 "Не выбран способ подключения",
+                                 "Выберите предложенный способ подключения",
                                  QMessageBox::Ok);
         return;
     }
@@ -82,8 +82,8 @@ void MainWindow::connectToServerRequested()
     if (server == "")
     {
         QMessageBox::information(this,
-                                 "Invalid Connection Data",
-                                 "Insert server address to connect",
+                                 "Не указан адрес сервера",
+                                 "Введите адрес сервера для подключения",
                                  QMessageBox::Ok);
         return;
     }
@@ -93,8 +93,8 @@ void MainWindow::connectToServerRequested()
     if (is_sql_authentication && login == "")
     {
         QMessageBox::information(this,
-                                 "Invalid Connection Data",
-                                 "Insert login to connect",
+                                 "Не указаны логин или пароль",
+                                 "Введите логин и пароль для подключения",
                                  QMessageBox::Ok);
         return;
     }
@@ -102,14 +102,14 @@ void MainWindow::connectToServerRequested()
     if (database == "")
     {
         QMessageBox::information(this,
-                                 "Invalid Connection Data",
-                                 "Insert database name to connect",
+                                 "Не указано имя базы данных",
+                                 "Введите имя базы данных для подключения",
                                  QMessageBox::Ok);
         return;
     }
 
     ui->button_connect->setEnabled(false);
-    ui->statusBar->showMessage("Connecting...");
+    ui->statusBar->showMessage("Соединение...");
 
     emit connectToServer(engine, driver, server, port, database, login, password, is_sql_authentication);
 }
@@ -175,8 +175,8 @@ void MainWindow::deleteRowRequested()
     if(ID == -1)
     {
         QMessageBox::information(this,
-                                 "Value of ID is empty",
-                                 "Choose the value of ID",
+                                 "Значение ID пустое",
+                                 "Введите значение поля ID",
                                  QMessageBox::Ok);
         return;
     }
@@ -190,23 +190,31 @@ void MainWindow::serverConnected()
     disconnect(ui->button_connect, SIGNAL(clicked()), this, SLOT(connectToServerRequested()));
     connect(ui->button_connect, SIGNAL(clicked()), this, SLOT(disconnectFromServerRequested()));
 
-    ui->button_connect->setText("Disconnect");
+    ui->button_connect->setText("Отключиться");
     ui->groupBox_database_browser->setEnabled(true);
     ui->groupBox_table_tools->setEnabled(true);
 
-    ui->statusBar->showMessage("Connected", 3000);
+    ui->statusBar->showMessage("Соединено", 3000);
     emit getTablesNames();
 }
 
 void MainWindow::fillTablesNames(QStringList tables_names)
 {
+    QStringList RusName = {"Классы", "Кабинеты", "Квалификации", "Школы", "Ученики", "Предметы",
+                            "Учителя", "Учитель и школа", "Учитель и предмет", "Расписание"};
+
     if (tables_names.length() == 0)
         QMessageBox::warning(this,
-                             "Tables",
-                             "There are no tables to display in the database",
+                             "Таблицы",
+                             "В этой базе данных нет таблиц",
                              QMessageBox::Ok);
     else
     {
+        for(int i = 0; i < 10; ++i)
+        {
+            tables_names[i] = RusName[i];
+        }
+
         ui->comboBox_table_name->addItems(tables_names);
 
         ui->comboBox_table_name->setEnabled(true);
@@ -217,13 +225,13 @@ void MainWindow::fillTablesNames(QStringList tables_names)
 void MainWindow::serverErrorWithConnection(QString message)
 {
     QMessageBox::critical(this,
-                          "Connection failed",
+                          "Соединение не удалось",
                           message,
                           QMessageBox::Ok);
 
     ui->button_connect->setEnabled(true);
 
-    ui->statusBar->showMessage("Connection failed", 3000);
+    ui->statusBar->showMessage("Соединение не удалось", 3000);
 }
 
 void MainWindow::serverDisconnected()
@@ -234,12 +242,13 @@ void MainWindow::serverDisconnected()
     ui->tableView_database_table->setModel(NULL);
 
     ui->button_connect->setEnabled(true);
-    ui->button_connect->setText("Connect");
+    ui->button_connect->setText("Подключиться");
 
     ui->comboBox_table_name->clear();
     ui->comboBox_table_name->setEnabled(false);
 
     ui->groupBox_database_browser->setEnabled(false);
+    ui->groupBox_table_tools->setEnabled(false);
     ui->button_connect->setFocus();
 }
 
@@ -249,7 +258,7 @@ void MainWindow::displayTable(QSqlQueryModel* model)
         ui->tableView_database_table->setModel(model);
     else
         QMessageBox::critical(this,
-                              "Select failed",
+                              "Не удалось получить информацию о таблицах",
                               model->lastError().databaseText(),
                               QMessageBox::Ok);
 

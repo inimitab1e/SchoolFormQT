@@ -153,7 +153,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
         }
 
         model->setQuery("Select " + dbtable.School + ".SchoolName as 'Название', adress as 'Адрес', "
-                        + "FoundingDate as 'Дата основания', " + dbtable.School + ".ID from " + name + query, db);
+                        + "FoundingDate as 'Дата основания', " + dbtable.School + ".SchoolID from " + name + query, db);
 
     }
     else if (name == "Student")
@@ -195,8 +195,192 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
                        + dbtable.Student + ".Birthday as 'Дата рождения', " + dbtable.Student + ".PhoneNumber as 'Номер телефона', "
                        + dbtable.Student + ".AverageScore as 'Средний балл', " + dbtable.School + ".SchoolName as 'Школа', "
                        + dbtable.ClassNames + ".ClassNameNumber as 'Класс', " + dbtable.Student + ".SchoolID, " + dbtable.Student + ".ClassNameID "
-                       + "from " + name + " left join " + dbtable.School + " on " + dbtable.Student + ".SchoolID = " + dbtable.School + ".ID "
+                       + "from " + name + " left join " + dbtable.School + " on " + dbtable.Student + ".SchoolID = " + dbtable.School + ".SchoolID "
                        + " left join " + dbtable.ClassNames + " on " + dbtable.Student + ".ClassNameID = " + dbtable.ClassNames + ".ClassNameID " + query, db);
+    }
+    else if (name == "Teacher")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Имя учителя")
+            {
+                Field = "TeacherName";
+            }
+            else if (Field == "Пол")
+            {
+                Field = "Gender";
+            }
+            else if (Field == "Дата рождения")
+            {
+                Field = "Birthday";
+            }
+            else if (Field == "Номер телефона")
+            {
+                Field = "PhoneNumber";
+            }
+            else if (Field == "Опыт работы")
+            {
+                Field = "WorkExperience";
+            }
+            else if (Field == "Образование")
+            {
+                Field = "Education";
+            }
+            else
+            {
+                Field = "QualificationName";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select TeacherName as 'Имя учителя', " + dbtable.Teacher + ".Gender as 'Пол', "
+                        + dbtable.Teacher + ".Birthday as 'Дата рождения', " + dbtable.Teacher
+                        + ".PhoneNumber as 'Номер телефона', WorkExperience as 'Опыт работы', Education as 'Образование', "
+                        + dbtable.QualificationCategories + ".QualificationName as 'Квалификация', " + dbtable.Teacher
+                        + ".QualificationID, " + dbtable.Teacher + ".TeacherID from " + name + " left join " + dbtable.QualificationCategories + " on "
+                        + dbtable.Teacher + ".QualificationID = " + dbtable.QualificationCategories + ".QualificationID " + query, db);
+    }
+    else if (name == "Timetable")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Школа")
+            {
+                Field = "SchoolName";
+            }
+            else if (Field == "День недели")
+            {
+                Field = "Weekday";
+            }
+            else if (Field == "Время")
+            {
+                Field = "ClassTime";
+            }
+            else if (Field == "Класс")
+            {
+                Field = "ClassNameNumber";
+            }
+            else if (Field == "Предмет")
+            {
+                Field = "SubjectName";
+            }
+            else if (Field == "Учитель")
+            {
+                Field = "TeacherName";
+            }
+            else
+            {
+                Field = "ClassRoomName";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select " + dbtable.School + ".SchoolName as 'Школа', Weekday as 'День недели', ClassTime as 'Время', "
+                        + dbtable.ClassNames + ".ClassNameNumber as 'Класс', " + dbtable.Subjects + ".SubjectName as 'Предмет', "
+                        + dbtable.Teacher + ".TeacherName as 'Учитель', " + dbtable.ClassRooms + ".ClassRoomName as 'Номер кабинета', "
+                        + dbtable.Timetable + ".SchoolID, " + dbtable.Timetable + ".ClassNameID, " + dbtable.Timetable + ".SubjectID, "
+                        + dbtable.Timetable + ".TeacherID, " + dbtable.Timetable + ".ClassRoomID, TimeTableID from " + name
+                        + " left join " + dbtable.School + " on " + dbtable.Timetable + ".SchoolID = " + dbtable.School + ".SchoolID "
+                        + " left join " + dbtable.ClassNames + " on " + dbtable.Timetable + ".ClassNameID = " + dbtable.ClassNames + ".ClassNameID "
+                        + " left join " + dbtable.Subjects + " on " + dbtable.Timetable + ".SubjectID = " + dbtable.Subjects + ".SubjectID "
+                        + " left join " + dbtable.Teacher + " on " + dbtable.Timetable + ".TeacherID = " + dbtable.Teacher + ".TeacherID "
+                        + " left join " + dbtable.ClassRooms + " on " + dbtable.Timetable + ".ClassRoomID = " + dbtable.ClassRooms + ".ClassRoomID " + query, db);
+    }
+    else if (name == "ClassNames")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Класс")
+            {
+                Field = "ClassNameNumber";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select " + dbtable.ClassNames + ".ClassNameNumber as 'Класс', " + dbtable.ClassNames
+                        + ".ClassNameID from " + name + query, db);
+    }
+    else if (name == "Subjects")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Предмет")
+            {
+                Field = "SubjectName";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select " + dbtable.Subjects + ".SubjectName as 'Предмет', " + dbtable.Subjects
+                        + ".SubjectID from " + name + query, db);
+    }
+    else if (name == "ClassRooms")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Кабинет")
+            {
+                Field = "ClassRoomName";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select " + dbtable.ClassRooms + ".ClassRoomName as 'Кабинет', " + dbtable.ClassRooms
+                        + ".ClassRoomID from " + name + query, db);
+    }
+    else if (name == "QualificationCategories")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Название")
+            {
+                Field = "QualificationName";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select " + dbtable.QualificationCategories + ".QualificationName as 'Название', " + dbtable.QualificationCategories
+                        + ".QualificationID from " + name + query, db);
+    }
+    else if (name == "TeacherAndSchool")
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Школа")
+            {
+                Field = "Schoolname";
+            }
+            else
+            {
+                Field = "TeacherName";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select " + dbtable.School + ".Schoolname as 'Школа', " + dbtable.Teacher + ".TeacherName as 'Учитель', "
+                        + dbtable.TeacherAndSchool + ".SchoolID, " + dbtable.TeacherAndSchool + ".TeacherID from " + name
+                        + " left join " + dbtable.School + " on " + dbtable.TeacherAndSchool + ".SchoolID = " + dbtable.School + ".SchoolID "
+                        + " left join " + dbtable.Teacher + " on " + dbtable.TeacherAndSchool + ".TeacherID = " + dbtable.Teacher + ".TeacherID " + query, db);
+    }
+    else
+    {
+        if (!(Field.isEmpty()) || !(Value.isEmpty()))
+        {
+
+            if (Field == "Учитель")
+            {
+                Field = "TeacherName";
+            }
+            else
+            {
+                Field = "SubjectName";
+            }
+            query = " where " + Field + " = " + "'" + Value + "'";
+        }
+        model->setQuery("Select " + dbtable.Teacher + ".TeacherName as 'Учитель', " + dbtable.Subjects + ".SubjectName as 'Предмет', "
+                        + dbtable.TeacherAndSubjects + ".TeacherID, " + dbtable.TeacherAndSubjects + ".SubjectID, TeacherAndSubjectsID from " + dbtable.TeacherAndSubjects
+                        + " left join " + dbtable.Teacher + " on " + dbtable.TeacherAndSubjects + ".TeacherID = " + dbtable.Teacher + ".TeacherID "
+                        + " left join " + dbtable.Subjects + " on " + dbtable.TeacherAndSubjects + ".SubjectID = " + dbtable.Subjects + ".SubjectID " + query, db);
     }
     return model;
 }

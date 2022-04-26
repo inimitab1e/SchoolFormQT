@@ -535,7 +535,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidget_addinfo">
             <property name="currentIndex">
-             <number>5</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tp_school">
              <attribute name="title">
