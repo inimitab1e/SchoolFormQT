@@ -132,7 +132,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
     DbTable dbtable;
     QString query = "";
 
-    if (name == "School")
+    if (name == "Школы")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -151,12 +151,12 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
-
+        name = dbtable.School;
         model->setQuery("Select " + dbtable.School + ".SchoolName as 'Название', adress as 'Адрес', "
                         + "FoundingDate as 'Дата основания', " + dbtable.School + ".SchoolID from " + name + query, db);
 
     }
-    else if (name == "Student")
+    else if (name == "Ученики")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -191,6 +191,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.Student;
         model->setQuery("Select " + dbtable.Student + ".StudentName as 'Имя ученика', " + dbtable.Student + ".Gender as 'Пол', "
                        + dbtable.Student + ".Birthday as 'Дата рождения', " + dbtable.Student + ".PhoneNumber as 'Номер телефона', "
                        + dbtable.Student + ".AverageScore as 'Средний балл', " + dbtable.School + ".SchoolName as 'Школа', "
@@ -198,7 +199,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
                        + "from " + name + " left join " + dbtable.School + " on " + dbtable.Student + ".SchoolID = " + dbtable.School + ".SchoolID "
                        + " left join " + dbtable.ClassNames + " on " + dbtable.Student + ".ClassNameID = " + dbtable.ClassNames + ".ClassNameID " + query, db);
     }
-    else if (name == "Teacher")
+    else if (name == "Учителя")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -233,6 +234,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.Teacher;
         model->setQuery("Select TeacherName as 'Имя учителя', " + dbtable.Teacher + ".Gender as 'Пол', "
                         + dbtable.Teacher + ".Birthday as 'Дата рождения', " + dbtable.Teacher
                         + ".PhoneNumber as 'Номер телефона', WorkExperience as 'Опыт работы', Education as 'Образование', "
@@ -240,7 +242,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
                         + ".QualificationID, " + dbtable.Teacher + ".TeacherID from " + name + " left join " + dbtable.QualificationCategories + " on "
                         + dbtable.Teacher + ".QualificationID = " + dbtable.QualificationCategories + ".QualificationID " + query, db);
     }
-    else if (name == "Timetable")
+    else if (name == "Расписание")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -275,6 +277,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.Timetable;
         model->setQuery("Select " + dbtable.School + ".SchoolName as 'Школа', Weekday as 'День недели', ClassTime as 'Время', "
                         + dbtable.ClassNames + ".ClassNameNumber as 'Класс', " + dbtable.Subjects + ".SubjectName as 'Предмет', "
                         + dbtable.Teacher + ".TeacherName as 'Учитель', " + dbtable.ClassRooms + ".ClassRoomName as 'Номер кабинета', "
@@ -286,7 +289,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
                         + " left join " + dbtable.Teacher + " on " + dbtable.Timetable + ".TeacherID = " + dbtable.Teacher + ".TeacherID "
                         + " left join " + dbtable.ClassRooms + " on " + dbtable.Timetable + ".ClassRoomID = " + dbtable.ClassRooms + ".ClassRoomID " + query, db);
     }
-    else if (name == "ClassNames")
+    else if (name == "Классы")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -297,10 +300,11 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.ClassNames;
         model->setQuery("Select " + dbtable.ClassNames + ".ClassNameNumber as 'Класс', " + dbtable.ClassNames
                         + ".ClassNameID from " + name + query, db);
     }
-    else if (name == "Subjects")
+    else if (name == "Предметы")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -311,10 +315,11 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.Subjects;
         model->setQuery("Select " + dbtable.Subjects + ".SubjectName as 'Предмет', " + dbtable.Subjects
                         + ".SubjectID from " + name + query, db);
     }
-    else if (name == "ClassRooms")
+    else if (name == "Кабинеты")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -325,10 +330,11 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.ClassRooms;
         model->setQuery("Select " + dbtable.ClassRooms + ".ClassRoomName as 'Кабинет', " + dbtable.ClassRooms
                         + ".ClassRoomID from " + name + query, db);
     }
-    else if (name == "QualificationCategories")
+    else if (name == "Квалификации")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -339,10 +345,11 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.QualificationCategories;
         model->setQuery("Select " + dbtable.QualificationCategories + ".QualificationName as 'Название', " + dbtable.QualificationCategories
                         + ".QualificationID from " + name + query, db);
     }
-    else if (name == "TeacherAndSchool")
+    else if (name == "Учитель и школа")
     {
         if (!(Field.isEmpty()) || !(Value.isEmpty()))
         {
@@ -357,6 +364,7 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.TeacherAndSchool;
         model->setQuery("Select " + dbtable.School + ".Schoolname as 'Школа', " + dbtable.Teacher + ".TeacherName as 'Учитель', "
                         + dbtable.TeacherAndSchool + ".SchoolID, " + dbtable.TeacherAndSchool + ".TeacherID from " + name
                         + " left join " + dbtable.School + " on " + dbtable.TeacherAndSchool + ".SchoolID = " + dbtable.School + ".SchoolID "
@@ -377,8 +385,9 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
             }
             query = " where " + Field + " = " + "'" + Value + "'";
         }
+        name = dbtable.TeacherAndSubjects;
         model->setQuery("Select " + dbtable.Teacher + ".TeacherName as 'Учитель', " + dbtable.Subjects + ".SubjectName as 'Предмет', "
-                        + dbtable.TeacherAndSubjects + ".TeacherID, " + dbtable.TeacherAndSubjects + ".SubjectID, TeacherAndSubjectsID from " + dbtable.TeacherAndSubjects
+                        + dbtable.TeacherAndSubjects + ".TeacherID, " + dbtable.TeacherAndSubjects + ".SubjectID, TeacherAndSubjectsID from " + name
                         + " left join " + dbtable.Teacher + " on " + dbtable.TeacherAndSubjects + ".TeacherID = " + dbtable.Teacher + ".TeacherID "
                         + " left join " + dbtable.Subjects + " on " + dbtable.TeacherAndSubjects + ".SubjectID = " + dbtable.Subjects + ".SubjectID " + query, db);
     }
@@ -394,7 +403,6 @@ QSqlQueryModel* DbController::selectDeleteRowTable(QString table, int ID)
     QString query = "Delete from " + table + " where ID = " + id;
 
     model->setQuery(query, db);
-
     return model;
 }
 

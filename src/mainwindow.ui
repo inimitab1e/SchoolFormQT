@@ -386,7 +386,7 @@
        <string>Обозреватель таблиц</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="3">
+       <item row="0" column="2">
         <widget class="QPushButton" name="button_show_table">
          <property name="text">
           <string>Показать</string>
@@ -396,7 +396,7 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="2">
+       <item row="0" column="1">
         <widget class="QComboBox" name="comboBox_table_name">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -418,7 +418,7 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="5">
+       <item row="1" column="0" colspan="4">
         <widget class="QTableView" name="tableView_database_table">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -455,19 +455,6 @@
           <string>Имя</string>
          </property>
         </widget>
-       </item>
-       <item row="0" column="1">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </widget>
@@ -535,7 +522,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidget_addinfo">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="tp_school">
              <attribute name="title">

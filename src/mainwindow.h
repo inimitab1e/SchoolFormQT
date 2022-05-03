@@ -39,14 +39,12 @@ signals:
     void getTablesNames();
     
 private:
-    Ui::MainWindow* ui;
     DbController*   db_controller;
     QThread*        db_thread;
-
+    Ui::MainWindow* ui;
 protected:
     virtual void keyPressEvent(QKeyEvent*);
 private slots:
-    void on_buttonAddinfo_clicked();
 };
 
 #endif // MAINWINDOW_H
