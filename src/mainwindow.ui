@@ -480,7 +480,11 @@
              <widget class="QComboBox" name="comboBox_table_filter"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_filter"/>
+             <widget class="QLineEdit" name="lineEdit_filter">
+              <property name="readOnly">
+               <bool>false</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="checkBox_filter">
@@ -537,7 +541,7 @@
                </widget>
               </item>
               <item row="0" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit"/>
+               <widget class="QLineEdit" name="lineEdit_SchoolName"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_8">
@@ -763,6 +767,54 @@
               </item>
               <item row="5" column="1">
                <widget class="QPushButton" name="pushButton_4">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tp_classes">
+             <attribute name="title">
+              <string>Класс</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_8">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_31">
+                <property name="text">
+                 <string>Номер класса</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_24"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="pushButton_7">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tp_rooms">
+             <attribute name="title">
+              <string>Кабинеты</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_9">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_32">
+                <property name="text">
+                 <string>Номер кабинета</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_25"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="pushButton_8">
                 <property name="text">
                  <string>Добавить</string>
                 </property>

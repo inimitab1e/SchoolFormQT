@@ -398,9 +398,60 @@ QSqlQueryModel* DbController::selectDeleteRowTable(QString table, int ID)
 {
     QSqlQueryModel* model = new QSqlQueryModel;
 
+    DbTable dbtable;
+    QString query = "";
     QString id = QString::number(ID);
 
-    QString query = "Delete from " + table + " where ID = " + id;
+    if (table == "Школы")
+    {
+        table = dbtable.School;
+        query = "Delete from " + table + " where " + dbtable.School + ".SchoolID = " + id;
+    }
+    else if (table == "Ученики")
+    {
+        table = dbtable.Student;
+        query = "Delete from " + table + " where " + dbtable.Student + ".StudentID = " + id;
+    }
+    else if (table == "Учителя")
+    {
+        table = dbtable.Teacher;
+        query = "Delete from " + table + " where " + dbtable.Teacher + ".TeacherID = " + id;
+    }
+    else if (table == "Расписание")
+    {
+        table = dbtable.Timetable;
+        query = "Delete from " + table + " where " + dbtable.Timetable + ".TimetableID = " + id;
+    }
+    else if (table == "Классы")
+    {
+        table = dbtable.ClassNames;
+        query = "Delete from " + table + " where " + dbtable.ClassNames + ".ClassNameID = " + id;
+    }
+    else if (table == "Предметы")
+    {
+        table = dbtable.Subjects;
+        query = "Delete from " + table + " where " + dbtable.Subjects + ".SubjectsID = " + id;
+    }
+    else if (table == "Кабинеты")
+    {
+        table = dbtable.ClassRooms;
+        query = "Delete from " + table + " where " + dbtable.ClassRooms + ".ClassRoomID = " + id;
+    }
+    else if (table == "Квалификации")
+    {
+        table = dbtable.QualificationCategories;
+        query = "Delete from " + table + " where " + dbtable.QualificationCategories + ".QualificationID = " + id;
+    }
+    else if (table == "Учитель и школа")
+    {
+        table = dbtable.TeacherAndSchool;
+        query = "Delete from " + table + " where " + dbtable.TeacherAndSchool + ".TeacherAndSchoolID = " + id;
+    }
+    else
+    {
+        table = dbtable.TeacherAndSubjects;
+        query = "Delete from " + table + " where " + dbtable.TeacherAndSubjects + ".TeacherAndSubjectsID = " + id;
+    }
 
     model->setQuery(query, db);
     return model;

@@ -183,6 +183,15 @@ void MainWindow::deleteRowRequested()
     emit selectTableDeleteRow(Table, ID);
 }
 
+void MainWindow::addInfoIntoRowRequested()
+{
+    QStringList fields;
+    QStringList values;
+    values << ui->
+    values << "asd" << "" << "dawd";
+    //emit selectTableDeleteRow(Table, ID);
+}
+
 void MainWindow::serverConnected()
 {
     ui->button_connect->setEnabled(true);

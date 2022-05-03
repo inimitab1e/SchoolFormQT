@@ -25,6 +25,7 @@ public slots:
     void authenticationMethodChanged();
     void showTableRequested();
     void deleteRowRequested();
+    void addInfoIntoRowRequested();
     void serverConnected();
     void serverErrorWithConnection(QString);
     void serverDisconnected();
