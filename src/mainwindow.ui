@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1228</width>
-    <height>504</height>
+    <height>562</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -526,7 +526,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidget_addinfo">
             <property name="currentIndex">
-             <number>0</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="tp_school">
              <attribute name="title">
@@ -584,7 +584,7 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
+              <item row="0" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_4"/>
               </item>
               <item row="1" column="0">
@@ -594,40 +594,60 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
+              <item row="1" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_5"/>
               </item>
-              <item row="2" column="0">
+              <item row="2" column="0" colspan="2">
                <widget class="QLabel" name="label_13">
                 <property name="text">
                  <string>Дата рождения (ГГГГ-ММ-ДД)</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
+              <item row="2" column="2">
                <widget class="QLineEdit" name="lineEdit_6"/>
               </item>
               <item row="3" column="0">
+               <widget class="QLabel" name="label_33">
+                <property name="text">
+                 <string>Номер телефона</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1" colspan="2">
+               <widget class="QLineEdit" name="lineEdit"/>
+              </item>
+              <item row="4" column="0">
                <widget class="QLabel" name="label_14">
                 <property name="text">
                  <string>Школа</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="1">
+              <item row="4" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_7"/>
               </item>
-              <item row="4" column="0">
+              <item row="5" column="0">
                <widget class="QLabel" name="label_15">
                 <property name="text">
                  <string>Класс</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="1">
+              <item row="5" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_8"/>
               </item>
-              <item row="5" column="1">
+              <item row="6" column="0">
+               <widget class="QLabel" name="label_34">
+                <property name="text">
+                 <string>Средний балл</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1" colspan="2">
+               <widget class="QLineEdit" name="lineEdit_26"/>
+              </item>
+              <item row="7" column="1" colspan="2">
                <widget class="QPushButton" name="pushButton_2">
                 <property name="text">
                  <string>Добавить</string>
@@ -661,47 +681,57 @@
               <item row="1" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_10"/>
               </item>
-              <item row="2" column="0">
+              <item row="2" column="0" colspan="2">
                <widget class="QLabel" name="label_18">
                 <property name="text">
                  <string>Дата рождения (ГГГГ-ММ-ДД)</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1" colspan="2">
+              <item row="2" column="2">
                <widget class="QLineEdit" name="lineEdit_11"/>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="label_19">
                 <property name="text">
-                 <string>Школа</string>
+                 <string>Номер телефона</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
+              <item row="3" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_12"/>
               </item>
-              <item row="4" column="0" colspan="2">
+              <item row="4" column="0">
                <widget class="QLabel" name="label_20">
                 <property name="text">
                  <string>Образование</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="2">
+              <item row="4" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_13"/>
               </item>
-              <item row="5" column="0" colspan="2">
+              <item row="5" column="0">
                <widget class="QLabel" name="label_21">
                 <property name="text">
                  <string>Квалификация</string>
                 </property>
                </widget>
               </item>
-              <item row="5" column="2">
+              <item row="5" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_14"/>
               </item>
-              <item row="6" column="2">
+              <item row="6" column="0">
+               <widget class="QLabel" name="label_35">
+                <property name="text">
+                 <string>Опыт работы</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1" colspan="2">
+               <widget class="QLineEdit" name="lineEdit_27"/>
+              </item>
+              <item row="7" column="2">
                <widget class="QPushButton" name="pushButton_3">
                 <property name="text">
                  <string>Добавить</string>
@@ -715,26 +745,6 @@
               <string>Расписание</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_5">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_22">
-                <property name="text">
-                 <string>Школа</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLineEdit" name="lineEdit_15"/>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_23">
-                <property name="text">
-                 <string>День недели</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLineEdit" name="lineEdit_16"/>
-              </item>
               <item row="2" column="0">
                <widget class="QLabel" name="label_24">
                 <property name="text">
@@ -742,18 +752,12 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QLineEdit" name="lineEdit_17"/>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="label_25">
+              <item row="6" column="1">
+               <widget class="QPushButton" name="pushButton_4">
                 <property name="text">
-                 <string>Предмет</string>
+                 <string>Добавить</string>
                 </property>
                </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLineEdit" name="lineEdit_18"/>
               </item>
               <item row="4" column="0">
                <widget class="QLabel" name="label_26">
@@ -762,15 +766,51 @@
                 </property>
                </widget>
               </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_25">
+                <property name="text">
+                 <string>Предмет</string>
+                </property>
+               </widget>
+              </item>
               <item row="4" column="1">
                <widget class="QLineEdit" name="lineEdit_19"/>
               </item>
-              <item row="5" column="1">
-               <widget class="QPushButton" name="pushButton_4">
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_36">
                 <property name="text">
-                 <string>Добавить</string>
+                 <string>Номер кабинета</string>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_15"/>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="lineEdit_17"/>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>Школа</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_23">
+                <property name="text">
+                 <string>День недели</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="lineEdit_28"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="lineEdit_16"/>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="lineEdit_18"/>
               </item>
              </layout>
             </widget>
@@ -822,6 +862,30 @@
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="tp_subjects">
+             <attribute name="title">
+              <string>Предметы</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_10">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_38">
+                <property name="text">
+                 <string>Название предмета</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_30"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="pushButton_9">
+                <property name="text">
+                 <string>Добавить</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
             <widget class="QWidget" name="tp_teacherandschool">
              <attribute name="title">
               <string>Учитель и школа</string>
@@ -847,7 +911,7 @@
               <item row="1" column="1">
                <widget class="QLineEdit" name="lineEdit_21"/>
               </item>
-              <item row="2" column="0" colspan="2">
+              <item row="2" column="1">
                <widget class="QPushButton" name="pushButton_5">
                 <property name="text">
                  <string>Добавить</string>

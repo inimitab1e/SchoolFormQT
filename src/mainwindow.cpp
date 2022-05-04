@@ -185,11 +185,58 @@ void MainWindow::deleteRowRequested()
 
 void MainWindow::addInfoIntoRowRequested()
 {
+    int index = ui->tabWidget_addinfo->currentIndex();
+    QString table_name = ui->tabWidget_addinfo->tabText(index);
     QStringList fields;
     QStringList values;
-    values << ui->
-    values << "asd" << "" << "dawd";
-    //emit selectTableDeleteRow(Table, ID);
+    // in each "if" insert values from lineEdits
+    if (table_name == "Школы")
+    {
+        table_name = "School";
+        fields << "SchoolName" << "Adress" << "FoundingDate";
+    }
+    else if (table_name == "Ученики")
+    {
+        table_name = "Student";
+        fields << "StudentName" << "Gender" << "Birthday" << "PhoneNumber" << "SchoolName" << "ClassNameNumber" << "AverageScore";
+    }
+    else if (table_name == "Учителя")
+    {
+        table_name = "Teacher";
+        fields << "TeacherName" << "Gender" << "Birthday" << "PhoneNumber" << "Education" << "QualificationName" << "WorkExperience";
+    }
+    else if (table_name == "Расписание")
+    {
+        table_name = "Timetable";
+        fields << "SchoolName" << "Weekday" << "ClassNameNumber" << "SubjectName" << "TeacherName" << "ClassRoomName";
+    }
+    else if (table_name == "Класс")
+    {
+        table_name = "ClassNames";
+        fields << "ClassNameNumber";
+    }
+    else if (table_name == "Кабинеты")
+    {
+        table_name = "ClassRooms";
+        fields << "ClassRoomName";
+    }
+    else if (table_name == "Предметы")
+    {
+        table_name = "Subjects";
+        fields << "SubjectName";
+    }
+    else if (table_name == "Учитель и школа")
+    {
+        table_name = "TeacherAndSchool";
+        fields << "TeacherName" << "SchoolName";
+    }
+    else
+    {
+        table_name = "TeacherAndSubjects";
+        fields << "TeacherName" << "SubjectName";
+    }
+
+    //emit createQueryToInsert(table_name, fields);
 }
 
 void MainWindow::serverConnected()
