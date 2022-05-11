@@ -11,7 +11,6 @@ public:
     QString Teacher = DbName + "Teacher";
     QString Timetable = DbName + "Timetable";
     QString Subjects = DbName + "Subjects";
-    QString QualificationCategories = DbName + "QualificationCategories";
     QString ClassNames = DbName + "ClassNames";
     QString ClassRooms = DbName + "ClassRooms";
     QString TeacherAndSchool = DbName + "TeacherAndSchool";

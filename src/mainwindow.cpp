@@ -55,7 +55,6 @@ MainWindow::MainWindow(QWidget* parent, DbController* dbc, QThread* dbt) :
             this, SLOT(serverErrorWithConnection(QString)));
     connect(db_controller, SIGNAL(serverDisconnected()), this, SLOT(serverDisconnected()));
     connect(db_controller, SIGNAL(tableSelected(QSqlQueryModel*)), this, SLOT(displayTable(QSqlQueryModel*)));
-    connect(db_controller, SIGNAL(tableDeleteRowSelected(QSqlQueryModel*)), this, SLOT(displayTable(QSqlQueryModel*)));
     connect(db_controller, SIGNAL(gotTablesNames(QStringList)), this, SLOT(fillTablesNames(QStringList)));
 
 }
@@ -222,11 +221,10 @@ void MainWindow::addInfoIntoRowRequested()
     {
         table_name = "Teacher";
         fields << "TeacherName" << "Gender" << "Birthday"
-               << "PhoneNumber" << "Education" << "QualificationName" << "WorkExperience";
+               << "PhoneNumber" << "Education" << "WorkExperience";
         values << ui->lineEdit_teacher_name->text() << ui->lineEdit_teacher_gender->text()
                << ui->lineEdit_teacher_birthday->text() << ui->lineEdit_teacher_phoneNumber->text()
-               << ui->lineEdit_teacher_education->text() << ui->lineEdit_teacher_qualificationName->text()
-               << ui->lineEdit_teacher_experience->text();
+               << ui->lineEdit_teacher_education->text() << ui->lineEdit_teacher_experience->text();
     }
     else if (table_name == "Расписание")
     {
@@ -289,7 +287,7 @@ void MainWindow::serverConnected()
 
 void MainWindow::fillTablesNames(QStringList tables_names)
 {
-    QStringList RusName = {"Классы", "Кабинеты", "Квалификации", "Школы", "Ученики", "Предметы",
+    QStringList RusName = {"Классы", "Кабинеты", "Школы", "Ученики", "Предметы",
                             "Учителя", "Учитель и школа", "Учитель и предмет", "Расписание"};
 
     if (tables_names.length() == 0)
@@ -299,7 +297,7 @@ void MainWindow::fillTablesNames(QStringList tables_names)
                              QMessageBox::Ok);
     else
     {
-        for(int i = 0; i < 10; ++i)
+        for(int i = 0; i < 9; ++i)
         {
             tables_names[i] = RusName[i];
         }

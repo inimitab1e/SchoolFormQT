@@ -27,7 +27,6 @@ signals:
     void serverErrorWithConnection(QString);
     void serverDisconnected();
     void tableSelected(QSqlQueryModel*);
-    void tableDeleteRowSelected(QSqlQueryModel*);
     void gotTablesNames(QStringList);
 
 private:

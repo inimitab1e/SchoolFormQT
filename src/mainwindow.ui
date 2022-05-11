@@ -526,7 +526,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidget_addinfo">
             <property name="currentIndex">
-             <number>8</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tp_school">
              <attribute name="title">
@@ -661,6 +661,13 @@
               <string>Учителя</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_4">
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_19">
+                <property name="text">
+                 <string>Номер телефона</string>
+                </property>
+               </widget>
+              </item>
               <item row="0" column="0">
                <widget class="QLabel" name="label_16">
                 <property name="text">
@@ -691,13 +698,6 @@
               <item row="2" column="2">
                <widget class="QLineEdit" name="lineEdit_teacher_birthday"/>
               </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="label_19">
-                <property name="text">
-                 <string>Номер телефона</string>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_teacher_phoneNumber"/>
               </item>
@@ -711,27 +711,17 @@
               <item row="4" column="1" colspan="2">
                <widget class="QLineEdit" name="lineEdit_teacher_education"/>
               </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="label_21">
-                <property name="text">
-                 <string>Квалификация</string>
-                </property>
-               </widget>
-              </item>
               <item row="5" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_teacher_qualificationName"/>
+               <widget class="QLineEdit" name="lineEdit_teacher_experience"/>
               </item>
-              <item row="6" column="0">
+              <item row="5" column="0">
                <widget class="QLabel" name="label_35">
                 <property name="text">
                  <string>Опыт работы</string>
                 </property>
                </widget>
               </item>
-              <item row="6" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_teacher_experience"/>
-              </item>
-              <item row="7" column="2">
+              <item row="6" column="2">
                <widget class="QPushButton" name="pushButton_3">
                 <property name="text">
                  <string>Добавить</string>
