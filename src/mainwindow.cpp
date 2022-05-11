@@ -27,6 +27,15 @@ MainWindow::MainWindow(QWidget* parent, DbController* dbc, QThread* dbt) :
     connect(ui->radio_windows_authentication, SIGNAL(clicked()), this, SLOT(authenticationMethodChanged()));
     connect(ui->button_show_table, SIGNAL(clicked()), this, SLOT(showTableRequested()));
     connect(ui->button_deleteRow, SIGNAL(clicked()), this, SLOT(deleteRowRequested()));
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
+    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
+    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
+    connect(ui->pushButton_4, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
+    connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
+    connect(ui->pushButton_6, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
+    connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
+    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
+    connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(addInfoIntoRowRequested()));
 
     // ui => db_controller
 
@@ -35,6 +44,8 @@ MainWindow::MainWindow(QWidget* parent, DbController* dbc, QThread* dbt) :
     connect(this, SIGNAL(disconnectFromServer()), db_controller, SLOT(disconnectFromServerRequested()));
     connect(this, SIGNAL(selectTable(QString,QString,QString)), db_controller, SLOT(selectTableRequested(QString, QString, QString)));
     connect(this, SIGNAL(selectTableDeleteRow(QString,int)), db_controller, SLOT(selectTableDeleteRowRequested(QString, int)));
+    connect(this, SIGNAL(createQueryToInsert(QString, QStringList, QStringList)),
+            db_controller, SLOT(insertInfoToRowRequested(QString, QStringList, QStringList)));
     connect(this, SIGNAL(getTablesNames()), db_controller, SLOT(getTablesNamesRequested()));
 
      // db_controller => ui
@@ -189,54 +200,76 @@ void MainWindow::addInfoIntoRowRequested()
     QString table_name = ui->tabWidget_addinfo->tabText(index);
     QStringList fields;
     QStringList values;
-    // in each "if" insert values from lineEdits
+
     if (table_name == "Школы")
     {
         table_name = "School";
         fields << "SchoolName" << "Adress" << "FoundingDate";
+        values << ui->lineEdit_school_schoolName->text() << ui->lineEdit_adres->text()
+               << ui->lineEdit_foundingDate->text();
     }
     else if (table_name == "Ученики")
     {
         table_name = "Student";
-        fields << "StudentName" << "Gender" << "Birthday" << "PhoneNumber" << "SchoolName" << "ClassNameNumber" << "AverageScore";
+        fields << "StudentName" << "Gender" << "Birthday"
+               << "PhoneNumber" << "SchoolName" << "ClassNameNumber" << "AverageScore";
+        values << ui->lineEdit_student_name->text() << ui->lineEdit_student_gender->text()
+               << ui->lineEdit_student_birthday->text() << ui->lineEdit_student_phone->text()
+               << ui->lineEdit_student_schoolName->text() << ui->lineEdit_student_classNumber->text()
+               << ui->lineEdit_student_averageScore->text();
     }
     else if (table_name == "Учителя")
     {
         table_name = "Teacher";
-        fields << "TeacherName" << "Gender" << "Birthday" << "PhoneNumber" << "Education" << "QualificationName" << "WorkExperience";
+        fields << "TeacherName" << "Gender" << "Birthday"
+               << "PhoneNumber" << "Education" << "QualificationName" << "WorkExperience";
+        values << ui->lineEdit_teacher_name->text() << ui->lineEdit_teacher_gender->text()
+               << ui->lineEdit_teacher_birthday->text() << ui->lineEdit_teacher_phoneNumber->text()
+               << ui->lineEdit_teacher_education->text() << ui->lineEdit_teacher_qualificationName->text()
+               << ui->lineEdit_teacher_experience->text();
     }
     else if (table_name == "Расписание")
     {
         table_name = "Timetable";
-        fields << "SchoolName" << "Weekday" << "ClassNameNumber" << "SubjectName" << "TeacherName" << "ClassRoomName";
+        fields << "SchoolName" << "Weekday" << "ClassNameNumber"
+               << "SubjectName" << "TeacherName" << "ClassRoomName";
+        values << ui->lineEdit_timetable_schoolName->text() << ui->lineEdit_timetable_weekday->text()
+               << ui->lineEdit_timetable_classNumber->text() << ui->lineEdit_timetable_subjectName->text()
+               << ui->lineEdit_timetable_teacherName->text() << ui->lineEdit_timetable_roomNumber->text();
     }
     else if (table_name == "Класс")
     {
         table_name = "ClassNames";
         fields << "ClassNameNumber";
+        values << ui->lineEdit_ClassNumber->text();
     }
     else if (table_name == "Кабинеты")
     {
         table_name = "ClassRooms";
         fields << "ClassRoomName";
+        values << ui->lineEdit_roomNumber->text();
     }
     else if (table_name == "Предметы")
     {
         table_name = "Subjects";
         fields << "SubjectName";
+        values << ui->lineEdit_subjectName->text();
     }
     else if (table_name == "Учитель и школа")
     {
         table_name = "TeacherAndSchool";
         fields << "TeacherName" << "SchoolName";
+        values << ui->lineEdit_teacherAndSchool_teacherName->text()
+               << ui->lineEdit_teacherAndSchool_schoolName->text();
     }
     else
     {
         table_name = "TeacherAndSubjects";
         fields << "TeacherName" << "SubjectName";
+        values << ui->lineEdit_teacherAndSubject_teacherName->text()
+               << ui->lineEdit_teacherAndSubject_subjectName->text();
     }
-
-    //emit createQueryToInsert(table_name, fields);
+    emit createQueryToInsert(table_name, fields, values);
 }
 
 void MainWindow::serverConnected()

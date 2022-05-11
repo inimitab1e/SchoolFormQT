@@ -37,6 +37,7 @@ signals:
     void disconnectFromServer();
     void selectTable(QString, QString, QString);
     void selectTableDeleteRow(QString, int);
+    void createQueryToInsert(QString, QStringList, QStringList);
     void getTablesNames();
     
 private:

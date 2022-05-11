@@ -88,6 +88,13 @@ void DbController::selectTableDeleteRowRequested(QString table, int ID)
     emit tableDeleteRowSelected(model);
 }
 
+void DbController::insertInfoToRowRequested(QString table_name, QStringList fields, QStringList values)
+{
+    QSqlQueryModel* model = insertRowToTable(table_name, fields, values);
+
+    emit tableDeleteRowSelected(model); //doing good, no need to create new signal
+}
+
 void DbController::getTablesNamesRequested()
 {
     emit gotTablesNames(db.tables());
@@ -391,6 +398,36 @@ QSqlQueryModel* DbController::selectTable(QString name, QString Field, QString V
                         + " left join " + dbtable.Teacher + " on " + dbtable.TeacherAndSubjects + ".TeacherID = " + dbtable.Teacher + ".TeacherID "
                         + " left join " + dbtable.Subjects + " on " + dbtable.TeacherAndSubjects + ".SubjectID = " + dbtable.Subjects + ".SubjectID " + query, db);
     }
+    return model;
+}
+
+QSqlQueryModel* DbController::insertRowToTable(QString table_name, QStringList fields, QStringList values)
+{
+    QSqlQueryModel* model = new QSqlQueryModel;
+
+    DbTable dbtable;
+    int i = 0;
+    QString query = "insert into " + table_name + " (";
+    if (fields.length() != 1)
+    {
+        for(i = 0; i < fields.length() - 1; i++)
+        {
+            query += (fields[i] + ", ");
+        }
+        query += (fields[i] + ") values (");
+
+        for(i = 0; i < values.length() - 1; i++)
+        {
+            query += ("'" + values[i] + "', ");
+        }
+        query += ("'" + values[i] + "')");
+    }
+    else
+    {
+        query += (fields[0] + ") values ('" + values[0] + "')");
+    }
+    qDebug() << query;
+    model->setQuery(query);
     return model;
 }
 

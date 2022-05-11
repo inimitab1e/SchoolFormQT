@@ -526,7 +526,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidget_addinfo">
             <property name="currentIndex">
-             <number>4</number>
+             <number>8</number>
             </property>
             <widget class="QWidget" name="tp_school">
              <attribute name="title">
@@ -541,7 +541,7 @@
                </widget>
               </item>
               <item row="0" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_SchoolName"/>
+               <widget class="QLineEdit" name="lineEdit_school_schoolName"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_8">
@@ -551,10 +551,10 @@
                </widget>
               </item>
               <item row="1" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_2"/>
+               <widget class="QLineEdit" name="lineEdit_adres"/>
               </item>
               <item row="2" column="2">
-               <widget class="QLineEdit" name="lineEdit_3"/>
+               <widget class="QLineEdit" name="lineEdit_foundingDate"/>
               </item>
               <item row="3" column="2">
                <widget class="QPushButton" name="pushButton">
@@ -585,7 +585,7 @@
                </widget>
               </item>
               <item row="0" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_4"/>
+               <widget class="QLineEdit" name="lineEdit_student_name"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_12">
@@ -595,7 +595,7 @@
                </widget>
               </item>
               <item row="1" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_5"/>
+               <widget class="QLineEdit" name="lineEdit_student_gender"/>
               </item>
               <item row="2" column="0" colspan="2">
                <widget class="QLabel" name="label_13">
@@ -605,7 +605,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QLineEdit" name="lineEdit_6"/>
+               <widget class="QLineEdit" name="lineEdit_student_birthday"/>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="label_33">
@@ -615,7 +615,7 @@
                </widget>
               </item>
               <item row="3" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit"/>
+               <widget class="QLineEdit" name="lineEdit_student_phone"/>
               </item>
               <item row="4" column="0">
                <widget class="QLabel" name="label_14">
@@ -625,7 +625,7 @@
                </widget>
               </item>
               <item row="4" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_7"/>
+               <widget class="QLineEdit" name="lineEdit_student_schoolName"/>
               </item>
               <item row="5" column="0">
                <widget class="QLabel" name="label_15">
@@ -635,7 +635,7 @@
                </widget>
               </item>
               <item row="5" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_8"/>
+               <widget class="QLineEdit" name="lineEdit_student_classNumber"/>
               </item>
               <item row="6" column="0">
                <widget class="QLabel" name="label_34">
@@ -645,7 +645,7 @@
                </widget>
               </item>
               <item row="6" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_26"/>
+               <widget class="QLineEdit" name="lineEdit_student_averageScore"/>
               </item>
               <item row="7" column="1" colspan="2">
                <widget class="QPushButton" name="pushButton_2">
@@ -669,7 +669,7 @@
                </widget>
               </item>
               <item row="0" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_9"/>
+               <widget class="QLineEdit" name="lineEdit_teacher_name"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_17">
@@ -679,7 +679,7 @@
                </widget>
               </item>
               <item row="1" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_10"/>
+               <widget class="QLineEdit" name="lineEdit_teacher_gender"/>
               </item>
               <item row="2" column="0" colspan="2">
                <widget class="QLabel" name="label_18">
@@ -689,7 +689,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QLineEdit" name="lineEdit_11"/>
+               <widget class="QLineEdit" name="lineEdit_teacher_birthday"/>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="label_19">
@@ -699,7 +699,7 @@
                </widget>
               </item>
               <item row="3" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_12"/>
+               <widget class="QLineEdit" name="lineEdit_teacher_phoneNumber"/>
               </item>
               <item row="4" column="0">
                <widget class="QLabel" name="label_20">
@@ -709,7 +709,7 @@
                </widget>
               </item>
               <item row="4" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_13"/>
+               <widget class="QLineEdit" name="lineEdit_teacher_education"/>
               </item>
               <item row="5" column="0">
                <widget class="QLabel" name="label_21">
@@ -719,7 +719,7 @@
                </widget>
               </item>
               <item row="5" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_14"/>
+               <widget class="QLineEdit" name="lineEdit_teacher_qualificationName"/>
               </item>
               <item row="6" column="0">
                <widget class="QLabel" name="label_35">
@@ -729,7 +729,7 @@
                </widget>
               </item>
               <item row="6" column="1" colspan="2">
-               <widget class="QLineEdit" name="lineEdit_27"/>
+               <widget class="QLineEdit" name="lineEdit_teacher_experience"/>
               </item>
               <item row="7" column="2">
                <widget class="QPushButton" name="pushButton_3">
@@ -774,7 +774,7 @@
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QLineEdit" name="lineEdit_19"/>
+               <widget class="QLineEdit" name="lineEdit_timetable_teacherName"/>
               </item>
               <item row="5" column="0">
                <widget class="QLabel" name="label_36">
@@ -784,10 +784,10 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLineEdit" name="lineEdit_15"/>
+               <widget class="QLineEdit" name="lineEdit_timetable_schoolName"/>
               </item>
               <item row="2" column="1">
-               <widget class="QLineEdit" name="lineEdit_17"/>
+               <widget class="QLineEdit" name="lineEdit_timetable_classNumber"/>
               </item>
               <item row="0" column="0">
                <widget class="QLabel" name="label_22">
@@ -804,13 +804,13 @@
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QLineEdit" name="lineEdit_28"/>
+               <widget class="QLineEdit" name="lineEdit_timetable_roomNumber"/>
               </item>
               <item row="1" column="1">
-               <widget class="QLineEdit" name="lineEdit_16"/>
+               <widget class="QLineEdit" name="lineEdit_timetable_weekday"/>
               </item>
               <item row="3" column="1">
-               <widget class="QLineEdit" name="lineEdit_18"/>
+               <widget class="QLineEdit" name="lineEdit_timetable_subjectName"/>
               </item>
              </layout>
             </widget>
@@ -827,7 +827,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLineEdit" name="lineEdit_24"/>
+               <widget class="QLineEdit" name="lineEdit_ClassNumber"/>
               </item>
               <item row="1" column="1">
                <widget class="QPushButton" name="pushButton_7">
@@ -851,7 +851,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLineEdit" name="lineEdit_25"/>
+               <widget class="QLineEdit" name="lineEdit_roomNumber"/>
               </item>
               <item row="1" column="1">
                <widget class="QPushButton" name="pushButton_8">
@@ -875,7 +875,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLineEdit" name="lineEdit_30"/>
+               <widget class="QLineEdit" name="lineEdit_subjectName"/>
               </item>
               <item row="1" column="1">
                <widget class="QPushButton" name="pushButton_9">
@@ -899,7 +899,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLineEdit" name="lineEdit_20"/>
+               <widget class="QLineEdit" name="lineEdit_teacherAndSchool_teacherName"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_28">
@@ -909,7 +909,7 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QLineEdit" name="lineEdit_21"/>
+               <widget class="QLineEdit" name="lineEdit_teacherAndSchool_schoolName"/>
               </item>
               <item row="2" column="1">
                <widget class="QPushButton" name="pushButton_5">
@@ -933,7 +933,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLineEdit" name="lineEdit_22"/>
+               <widget class="QLineEdit" name="lineEdit_teacherAndSubject_teacherName"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_30">
@@ -943,7 +943,7 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QLineEdit" name="lineEdit_23"/>
+               <widget class="QLineEdit" name="lineEdit_teacherAndSubject_subjectName"/>
               </item>
               <item row="2" column="1">
                <widget class="QPushButton" name="pushButton_6">
